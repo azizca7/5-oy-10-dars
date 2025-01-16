@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style/style.css" />
+    <title>5-oy 10-dars</title>
+  </head>
+  <body>
+    <form id="form">
+      <input type="text" name="" id="name" placeholder="Enter name" />
+      <input type="number" name="" id="price" placeholder="Enter price" />
+      <input type="number" name="" id="count" placeholder="Enter count" />
+
+      <button id="btn">button</button>
+    </form>
+    <table id="table">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Nomi</th>
+          <th>Narxi</th>
+          <th>Soni</th>
+          <th>Amallar</th>
+        </tr>
+      </thead>
+
+      <tbody id="tbody"></tbody>
+
+      <tfoot>
+        <tr>
+          <td colspan="2"><b>JAMI:</b></td>
+          <td id="overalPrice">3000</td>
+          <td id="overalCount">20</td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <h2>1. Tasodifiy Emoji Generator</h2>
+    <div id="emoji-display"></div>
+    <button id="generateButton">Generate Emoji</button>
+    <br /><br />
+
+    <h2>2. Matn tahrirlash oynasi</h2>
+    <textarea id="text-area"></textarea>
+    <br />
+    <button id="bold-button">Bold</button>
+    <button id="italic-button">Italic</button>
+    <button id="clear-button">Clear</button>
+
+    <br /><br />
+    <h2>3. Progress Bar Yaratish</h2>
+    <div id="progress-container">
+      <div id="progress-bar"></div>
+    </div>
+    <button id="start-button">Start</button>
+    <p id="message"></p>
+    <script src="./js/app.js" type="module"></script>
+  </body>
+</html>
