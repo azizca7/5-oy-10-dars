@@ -82,6 +82,53 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+document.addEventListener("click", function (event) {
+  let element = event.target;
+
+  while (element && element.tagName !== "TR") {
+    element = element.parentElement;
+  }
+
+  if (!element) {
+    return;
+  }
+  let id = event.target.getAttribute("data-id");
+
+  if (event.target.classList.contains("edit")) {
+    let cells = element.querySelectorAll("td");
+    cells.forEach((cell, i) => {
+      if (i > 0 && i <= 3) {
+        cell.innerHTML = `<input type="text" value="${cell.innerText}" />`;
+      }
+    });
+    event.target.textContent = "Save";
+    event.target.className = "save";
+  } else if (event.target.classList.contains("save")) {
+    let inputs = element.querySelectorAll("input");
+    let products = getData();
+    let index = products.findIndex((p) => p.id == id);
+
+    products[index].name = inputs[0].value;
+    products[index].price = inputs[1].value;
+    products[index].count = inputs[2].value;
+
+    localStorage.setItem("products", JSON.stringify(products));
+
+    inputs.forEach((input, i) => {
+      element.cells[i + 1].innerText = input.value;
+    });
+
+    event.target.textContent = "Edit";
+    event.target.className = "edit";
+
+    let totalPrice = products.reduce((sum, p) => sum + +p.price, 0);
+    let totalCount = products.reduce((sum, p) => sum + +p.count, 0);
+
+    overalPrice.innerText = totalPrice;
+    overalCount.innerText = totalCount;
+  }
+});
+
 // 1. Tasodifiy Emoji Generator
 
 const emojilar = ["😀", "🎉", "🚀", "🐱", "🍎", "🌟", "🏀", "🎸", "🌍", "🧩"];
